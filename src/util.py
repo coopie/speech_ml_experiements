@@ -1,4 +1,8 @@
+import numpy as np
+from os.path import split as split_path
+
 from data_names import *
+
 
 def get_emotion_from_filename(filename):
     return split_path(filename)[-1].split('.')[0].split('_')[1]
