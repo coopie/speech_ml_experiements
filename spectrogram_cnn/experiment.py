@@ -29,9 +29,9 @@ def main():
 
     test, train, val = ttv_data = learning.split_ttv(spectrogram_data)
 
-    test['x']  = np.reshape(test['x'],  (test['x'].shape[0] ,) + (1,) + test['x'].shape[1:] )
-    train['x'] = np.reshape(train['x'], (train['x'].shape[0],) + (1,) + train['x'].shape[1:]  )
-    val['x']   = np.reshape(val['x'],   (val['x'].shape[0]  ,) + (1,) + val['x'].shape[1:]  )
+    # test['x']  = np.reshape(test['x'],  (test['x'].shape[0] ,) + (1,) + test['x'].shape[1:] )
+    # train['x'] = np.reshape(train['x'], (train['x'].shape[0],) + (1,) + train['x'].shape[1:]  )
+    # val['x']   = np.reshape(val['x'],   (val['x'].shape[0]  ,) + (1,) + val['x'].shape[1:]  )
 
 
     learning.train(
@@ -107,7 +107,7 @@ def normalise(datum, frequency):
 
 def slice_spectrogram(spec, frequencies,**unused):
     smaller_than_2khz = sum(frequencies < 2000)
-    return np.log10(spec[:smaller_than_2khz] + 1)
+    return np.log(spec[:smaller_than_2khz] + 1) / np.log(256) # log base 256 (largest number possible is 2)
 
 
 if __name__ == '__main__':

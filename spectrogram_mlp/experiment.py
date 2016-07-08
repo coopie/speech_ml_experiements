@@ -2,7 +2,7 @@ import src_context
 
 import learning
 from ttv_to_spectrograms import ttv_to_spectrograms
-from util import ttv_yaml_to_dict, EMOTIONS
+from util import yaml_to_dict, EMOTIONS
 
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
@@ -22,7 +22,7 @@ THIS_DIR = os.path.dirname(os.path.realpath(__file__)) + '/'
 
 def main():
     ttv_file = 'ttv_bt.yaml'
-    ttv_info = ttv_yaml_to_dict(THIS_DIR + ttv_file)
+    ttv_info = yaml_to_dict(THIS_DIR + ttv_file)
     print("GETTING SPECTORGRAM DATA...")
     spectrogram_data = ttv_to_spectrograms(
         ttv_info,
